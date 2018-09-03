@@ -6,14 +6,11 @@ import ButtonBackground from '../../components/stylecomp/ButtonBackground/Button
 import HeadingText from '../../components/stylecomp/HeadingText/HeadingText';
 
 class HomeScreen extends Component {
-  state = {
-    showInput: false
-  };
 
   constructor(props) {
   super(props);
   this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
-}
+  }
 
 onNavigatorEvent = event => {
   if (event.type === "NavBarButtonPress") {
@@ -24,37 +21,17 @@ onNavigatorEvent = event => {
     }
   }
 };
-
     GoToHome = () => {
       startMainTabs();
     };
 
-    Createaccount = () => {
-      this.setState({
-        showInput: true
-      })
-    };
-
     render () {
-        let LogSign= this.state.showInput===true ? styles.signin : styles.login;
-
         return (
               <View>
-                <HeadingText>Veuillez vous connecter </HeadingText>
-                <DefaultInput placeholder='Email'/>
-                <DefaultInput placeholder='Password' />
-                <DefaultInput placeholder='ConfirmPassword' style={LogSign}/>
+                <HeadingText>Welcome to LoversCars </HeadingText>
                 <ButtonBackground color='#3862a5' onPress={this.GoToHome}>
-                Connexion
+                Dive deeper
                 </ButtonBackground>
-                <View>
-                  <TouchableOpacity style={styles.touch} onPress={()=>alert('forgot pass')}>
-                    <Text style={styles.forgot}>Forgot password</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.touch} onPress={this.Createaccount}>
-                    <Text style={styles.forgot}>Creer votre compte</Text>
-                  </TouchableOpacity>
-                </View>
               </View>
         );
     }

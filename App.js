@@ -4,12 +4,17 @@ import HomeScreen from './src/screens/HomeScreen/HomeScreen';
 import SideDrawer from './src/screens/SideDrawer/SideDrawer';
 import Localisation from './src/screens/Localisation/Localisation';
 import Voitures from './src/screens/Voitures/Voitures';
+import AuthScreen from './src/screens/AuthScreen/AuthScreen';
+import RegisterScreen from './src/screens/RegisterScreen/RegisterScreen';
+import Aboutus from './src/screens/Aboutus/Aboutus';
 
 Navigation.registerComponent('loverscar.HomeScreen', () => HomeScreen );
 Navigation.registerComponent('loverscar.Localisation', () => Localisation );
 Navigation.registerComponent('loverscar.SideDrawer', () => SideDrawer );
 Navigation.registerComponent('loverscar.Voitures', () => Voitures );
 Navigation.registerComponent('loverscar.AuthScreen', () => AuthScreen );
+Navigation.registerComponent('loverscar.RegisterScreen', () => RegisterScreen );
+Navigation.registerComponent('loverscar.Aboutus', () => Aboutus );
 
 Navigation.startSingleScreenApp({
   screen: {

@@ -6,9 +6,6 @@ import ButtonBackground from '../../components/stylecomp/ButtonBackground/Button
 import HeadingText from '../../components/stylecomp/HeadingText/HeadingText';
 
 class RegisterScreen extends Component {
-  state = {
-    showInput: false
-  };
 
   constructor(props) {
   super(props);
@@ -31,11 +28,11 @@ onNavigatorEvent = event => {
 
     render () {
         return (
-              <View>
+              <View style={{backgroundColor: 'white', flex: 1}}>
                 <HeadingText>Veuillez vous connecter </HeadingText>
                 <DefaultInput placeholder='Email'/>
                 <DefaultInput placeholder='Password' />
-                <DefaultInput placeholder='ConfirmPassword' style={LogSign}/>
+                <DefaultInput placeholder='ConfirmPassword'/>
                 <ButtonBackground color='#3862a5' onPress={this.GoToHome}>
                 Inscription
                 </ButtonBackground>

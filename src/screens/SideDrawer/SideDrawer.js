@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Dimensions, ImageBackground, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, ImageBackground, TouchableOpacity, Image, ScrollView, Button } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { Navigation } from 'react-native-navigation';
+import { StackNavigator } from 'react-navigation';
 
 import AuthScreen from '../AuthScreen/AuthScreen';
 import HomeScreen from '../HomeScreen/HomeScreen';
 import Voitures from '../Voitures/Voitures';
+import RegisterScreen from '../RegisterScreen/RegisterScreen';
 
 class SideDrawer extends Component {
 
@@ -13,41 +16,47 @@ class SideDrawer extends Component {
       this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
     }
 
-    // GoToLogScreen = () => {
-    //   //HomeScreen();
-    //   //this.toggleDrawer();
-    //   // this.props.navigator.popToRoot({
-    //   //   title: 'Auth',
-    //   //   link: 'loverscar.HomeScreen'
-    //   // });
-    //   this.props.navigator.showModal({
-    //     screen: "loverscar.HomeScreen", // unique ID registered with Navigation.registerScreen
-    //     title: "AuthScreen", // title of the screen as appears in the nav bar (optional)
-    //     passProps: {}, // simple serializable object that will pass as props to the modal (optional)
-    //     navigatorStyle: {}, // override the navigator style for the screen, see "Styling the navigator" below (optional)
-    //     animationType: 'slide-up' // 'none' / 'slide-up' , appear animation for the modal (optional, default 'slide-up')
-    //   });
-    // }
-    onContactSelected = contactID => {
-  //     this.props.navigator.handleDeepLink({
-  //   link: 'chats/' + contactID,
-  //   payload: '' // (optional) Extra payload with deep link
-  // });
-  console.log(contactID);
-}
-    onNavigatorEvent = event => {
-      if (event.type == 'DeepLink') {
-        console.log('DeepLink');
-      }
-    };
+  CloseDrawer = () => {
+    this.props.navigator.toggleDrawer({
+        to: 'closed',
+        side: 'left',
+        animated: true
+    });
+  }
 
-    // toggleDrawer(){
-    //   this.props.navigator.toggleDrawer({
-		// 	to: 'closed',
-		// 	side: 'left',
-		// 	animated: true
-    // });
-    // };
+  GoToLogScreen = () => {
+        this.CloseDrawer();
+         this.props.navigator.dismissModal({
+           screen: "loverscar.AuthScreen",
+           passProps: {}, // simple serializable object that will pass as props to the modal (optional)
+           animationType: 'slide-down' // 'none' / 'slide-up' , appear animation for the modal (optional, default 'slide-up')
+          });
+
+       this.props.navigator.showModal({
+         screen: "loverscar.AuthScreen",
+         title: "Authenfication",
+         passProps: {},
+         animationType: 'fade'
+        });
+       // this.props.navigation.navigate({ screen: 'loverscar.HomeScreen', title: 'HomeScreen'});
+     }
+
+     GoToAboutusScreen = () => {
+           this.CloseDrawer();
+            this.props.navigator.dismissModal({
+              screen: "loverscar.Aboutus",
+              passProps: {}, // simple serializable object that will pass as props to the modal (optional)
+              animationType: 'slide-down' // 'none' / 'slide-up' , appear animation for the modal (optional, default 'slide-up')
+             });
+
+          this.props.navigator.showModal({
+            screen: "loverscar.Aboutus",
+            title: "Qui Sommes nous ?",
+            passProps: {},
+            animationType: 'fade'
+           });
+          // this.props.navigation.navigate({ screen: 'loverscar.HomeScreen', title: 'HomeScreen'});
+        }
 
     render () {
         return (
@@ -61,7 +70,7 @@ class SideDrawer extends Component {
               source={require('../../assets/images/images.jpg')}
               style={styles.img} >
                 <View style={styles.drawerHeaderTextContainer}>
-                  <Text style={[styles.drawerHeaderText ,  {textDecorationLine: 'none',fontWeight: '700'}]}>/</Text>
+                  <Text style={[styles.drawerHeaderText ,  {textDecorationLine: 'none', fontWeight: '700'}]}>/</Text>
                 </View>
               </ImageBackground>
               </View>
@@ -71,7 +80,7 @@ class SideDrawer extends Component {
               <Text style={styles.textSide}>Log in / Sign in</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={styles.menuItem}>
+              <TouchableOpacity style={styles.menuItem} onPress={this.GoToAboutusScreen}>
               <Icon size={30} name='ios-help-circle-outline' color='black' />
               <Text style={styles.textSide}>About Us</Text>
               </TouchableOpacity>
@@ -91,6 +100,15 @@ class SideDrawer extends Component {
     }
 }
 
+// const RootStack = StackNavigator({
+//   Home: {
+//     screen: HomeScreen,
+//   },
+//   Login: {
+//     screen: AuthScreen,
+//   },
+// });
+
 const styles = StyleSheet.create({
   container: {
      backgroundColor: "white",
@@ -102,6 +120,7 @@ const styles = StyleSheet.create({
   },
   menuItem: {
     flexDirection: 'row',
+    alignItems: 'center',
     marginTop: 50,
     marginLeft: 30
   },
@@ -129,4 +148,18 @@ const styles = StyleSheet.create({
   }
 });
 
+// export default class drawer extends React.Component {
+//   render() {
+//     return <RootStack />;
+//   }
+// }
 export default SideDrawer;
+// export default StackNavigator({
+// Home:{
+// screen:HomeScreen
+// },
+// Login: {
+// screen: AuthScreen
+// }
+//
+// });
