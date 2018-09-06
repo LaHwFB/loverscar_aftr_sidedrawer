@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, TouchableOpacity, TextInput, Button, StyleSheet} from 'react-native';
 import startMainTabs from '../MainTabs/startMainTabs';
-import DefaultInput from '../../components/stylecomp/DefaultInput/DefaultInput';
 import ButtonBackground from '../../components/stylecomp/ButtonBackground/ButtonBackground';
 import HeadingText from '../../components/stylecomp/HeadingText/HeadingText';
 

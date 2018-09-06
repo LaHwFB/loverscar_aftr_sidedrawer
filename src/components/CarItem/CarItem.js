@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
-import Icon from 'react-native-vector-icons/Ionicons';
+//import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const CarItem = props => (
   <TouchableOpacity onPress={props.onItemPressed} >
@@ -11,7 +12,7 @@ const CarItem = props => (
       </View>
 
       <View style={styles.carInfo}>
-        <Icon size={30} name='person' color='black'/>
+        <Icon size={20} name='airline-seat-recline-normal' color='black'/>
         <Text style={styles.font}>{props.sieges}</Text>
         <Text style={styles.font}>{props.portes}</Text>
       </View>

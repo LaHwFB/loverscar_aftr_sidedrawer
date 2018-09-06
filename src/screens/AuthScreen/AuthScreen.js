@@ -7,9 +7,6 @@ import HeadingText from '../../components/stylecomp/HeadingText/HeadingText';
 import RegisterScreen from '../RegisterScreen/RegisterScreen'
 
 class AuthScreen extends Component {
-  state = {
-    showInput: false
-  };
 
   constructor(props) {
   super(props);
@@ -39,33 +36,46 @@ onNavigatorEvent = event => {
 
       this.props.navigator.showModal({
         screen: "loverscar.RegisterScreen",
-        title: "Register", // title of the screen as appears in the nav bar (optional)
-        passProps: {}, // simple serializable object that will pass as props to the modal (optional)
-        animationType: 'fade' // 'none' / 'slide-up' , appear animation for the modal (optional, default 'slide-up')
+        title: "Register",
+        passProps: {},
+        animationType: 'fade'
        });
     }
 
     onRequestClose = () => {
       this.props.navigator.dismissModal({
         screen: "loverscar.AuthScreen",
-        passProps: {}, // simple serializable object that will pass as props to the modal (optional)
-        animationType: 'slide-down' // 'none' / 'slide-up' , appear animation for the modal (optional, default 'slide-up')
+        passProps: {},
+        animationType: 'slide-down'
+       });
+    }
+
+    forgetmdp = () => {
+      this.props.navigator.dismissModal({
+        screen: "loverscar.Forgetpass",
+        passProps: {},
+        animationType: 'fade'
+      });
+
+      this.props.navigator.showModal({
+        screen: "loverscar.Forgetpass",
+        title: "Reinitialiser mdp",
+        passProps: {},
+        animationType: 'fade'
        });
     }
 
     render () {
-        let LogSign= this.state.showInput===true ? styles.signin : styles.login;
-
         return (
               <View style={{backgroundColor: 'white', flex: 1}}>
-                <HeadingText>Veuillez vous connecter </HeadingText>
+                <HeadingText> Connectez Vous </HeadingText>
                 <DefaultInput placeholder='Email'/>
                 <DefaultInput placeholder='Password' />
                 <ButtonBackground color='#3862a5' onPress={this.GoToHome}>
                 Connexion
                 </ButtonBackground>
                 <View>
-                  <TouchableOpacity style={styles.touch} onPress={()=>alert('forgot pass')}>
+                  <TouchableOpacity style={styles.touch} onPress={this.forgetmdp}>
                     <Text style={styles.forgot}>Forgot password</Text>
                   </TouchableOpacity>
                   <TouchableOpacity style={styles.touch} onPress={this.Createaccount}>

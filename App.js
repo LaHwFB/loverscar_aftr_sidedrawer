@@ -7,6 +7,7 @@ import Voitures from './src/screens/Voitures/Voitures';
 import AuthScreen from './src/screens/AuthScreen/AuthScreen';
 import RegisterScreen from './src/screens/RegisterScreen/RegisterScreen';
 import Aboutus from './src/screens/Aboutus/Aboutus';
+import Forgetpass from './src/screens/Forgetpass/Forgetpass';
 
 Navigation.registerComponent('loverscar.HomeScreen', () => HomeScreen );
 Navigation.registerComponent('loverscar.Localisation', () => Localisation );
@@ -15,6 +16,7 @@ Navigation.registerComponent('loverscar.Voitures', () => Voitures );
 Navigation.registerComponent('loverscar.AuthScreen', () => AuthScreen );
 Navigation.registerComponent('loverscar.RegisterScreen', () => RegisterScreen );
 Navigation.registerComponent('loverscar.Aboutus', () => Aboutus );
+Navigation.registerComponent('loverscar.Forgetpass', () => Forgetpass );
 
 Navigation.startSingleScreenApp({
   screen: {

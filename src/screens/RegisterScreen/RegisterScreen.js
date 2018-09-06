@@ -29,7 +29,7 @@ onNavigatorEvent = event => {
     render () {
         return (
               <View style={{backgroundColor: 'white', flex: 1}}>
-                <HeadingText>Veuillez vous connecter </HeadingText>
+                <HeadingText>Creez votre compte </HeadingText>
                 <DefaultInput placeholder='Email'/>
                 <DefaultInput placeholder='Password' />
                 <DefaultInput placeholder='ConfirmPassword'/>
